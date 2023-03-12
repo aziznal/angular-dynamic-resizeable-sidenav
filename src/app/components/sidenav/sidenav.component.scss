@@ -1,0 +1,24 @@
+:host {
+  height: 100vh;
+  width: var(--sidenav-width);
+
+  box-sizing: border-box;
+
+  // makes the sidenav stay in place, even when content is scrollable
+  position: sticky;
+  top: 0;
+
+  background-color: rgb(237, 241, 243);
+
+  border-right: 2px solid rgb(192, 192, 192);
+}
+
+.sidenav-body-container {
+  overflow-y: auto;
+
+  height: 100%;
+
+  padding: 16px;
+
+  box-sizing: border-box;
+}

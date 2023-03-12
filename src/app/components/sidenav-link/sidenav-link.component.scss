@@ -1,0 +1,40 @@
+a {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 8px;
+
+  box-sizing: border-box;
+
+  padding: 16px;
+
+  // 32px is just a bit of a margin to make sure the link is smaller than the sidenav
+  min-width: calc(var(--min-expanded-sidenav-width) - 32px);
+
+  text-decoration: none;
+  color: #000;
+
+  transition: background-color 75ms ease-out;
+
+  border-radius: 4px;
+
+  // change overflowing text to ellipsis
+  .text-container {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    background-color: #deebff;
+  }
+
+  &.active {
+    background-color: #c1daff;
+    font-weight: bold;
+    color: rgb(36, 82, 231);
+  }
+}
