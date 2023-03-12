@@ -1,0 +1,13 @@
+:host {
+  min-height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  flex: 1;
+
+  background-color: #e5e5e5;
+}
