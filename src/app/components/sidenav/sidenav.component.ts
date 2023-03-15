@@ -3,6 +3,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostBinding,
   HostListener,
   ViewChild,
 } from '@angular/core';
@@ -29,6 +30,11 @@ export class SidenavComponent implements AfterViewInit {
 
   @ViewChild('sidenavBody')
   sidenavBodyRef?: ElementRef<HTMLElement>;
+
+  @HostBinding('class.resizing')
+  get isResizing() {
+    return this.resizingEvent.isTracking;
+  }
 
   resizingEvent: ResizingEvent = {
     isTracking: false,

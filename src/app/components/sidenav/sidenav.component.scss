@@ -6,6 +6,11 @@
   top: 0;
 
   box-sizing: border-box;
+
+  // make width transition smooth when not resizing manually
+  &:not(.resizing) {
+    transition: width 0.6s cubic-bezier(0.02, 0.68, 0.63, 0.98);
+  }
 }
 
 #resizeHandle {
