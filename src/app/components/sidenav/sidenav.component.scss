@@ -5,3 +5,22 @@
   position: sticky;
   top: 0;
 }
+
+#resizeHandle {
+  height: 100%;
+
+  background-color: rgb(20, 117, 228);
+  width: 4px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  cursor: ew-resize;
+
+  transition: background-color 0.2s ease-out;
+
+  &:hover {
+    background-color: rgb(93, 159, 235);
+  }
+}

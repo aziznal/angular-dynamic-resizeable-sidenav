@@ -1,21 +1,25 @@
-<h1>Sidenav</h1>
-
-<ul>
-  <li>
-    <a routerLink="/">Home</a>
-  </li>
+<div class="sidenav-body">
+  <h1>Sidenav</h1>
 
   <ul>
     <li>
-      <a routerLink="home/screen-1">Screen 1</a>
+      <a routerLink="/">Home</a>
     </li>
+
+    <ul>
+      <li>
+        <a routerLink="home/screen-1">Screen 1</a>
+      </li>
+
+      <li>
+        <a routerLink="home/screen-2">Screen 2</a>
+      </li>
+    </ul>
 
     <li>
-      <a routerLink="home/screen-2">Screen 2</a>
+      <a routerLink="/settings">Settings</a>
     </li>
   </ul>
+</div>
 
-  <li>
-    <a routerLink="/settings">Settings</a>
-  </li>
-</ul>
+<div id="resizeHandle"></div>
