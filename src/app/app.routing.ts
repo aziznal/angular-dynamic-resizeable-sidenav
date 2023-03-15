@@ -27,6 +27,13 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'settings',
+    loadComponent: () =>
+      import('./screens/settings/settings-screen.component').then(
+        (m) => m.SettingsScreenComponent
+      ),
+  },
   // redirect to `home` if there is no path
   {
     path: '',
