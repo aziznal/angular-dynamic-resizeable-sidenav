@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  template: `<h1>Page 2 component!</h1>`,
+  template: `<h4>Page 2 component!</h4>`,
   styles: [``],
   standalone: true,
 })
