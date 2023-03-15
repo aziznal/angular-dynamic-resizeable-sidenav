@@ -4,12 +4,14 @@
 
   position: sticky;
   top: 0;
+
+  box-sizing: border-box;
 }
 
 #resizeHandle {
   height: 100%;
 
-  background-color: rgb(20, 117, 228);
+  background-color: rgb(165, 165, 165);
   width: 4px;
 
   position: absolute;
@@ -30,5 +32,19 @@
 
   &:hover {
     background-color: rgb(93, 159, 235);
+  }
+
+  // buffer to avoid flickering cursor when resizing
+  &.resizing::after {
+    content: "";
+    display: block;
+
+    height: 100%;
+
+    width: 48px;
+
+    position: absolute;
+    right: -24px;
+    z-index: 1;
   }
 }

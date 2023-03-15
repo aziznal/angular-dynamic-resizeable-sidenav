@@ -24,4 +24,8 @@
 </div>
 
 <!-- Resize Handle -->
-<div id="resizeHandle" #resizeHandle></div>
+<div
+  id="resizeHandle"
+  #resizeHandle
+  [class.resizing]="resizingEvent.isTracking"
+></div>

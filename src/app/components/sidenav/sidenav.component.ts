@@ -4,8 +4,6 @@ import {
   Component,
   ElementRef,
   HostListener,
-  OnInit,
-  Renderer2,
   ViewChild,
 } from '@angular/core';
 
@@ -32,16 +30,14 @@ export class SidenavComponent implements AfterViewInit {
   @ViewChild('sidenavBody')
   sidenavBodyRef?: ElementRef<HTMLElement>;
 
-  #resizingEvent: ResizingEvent = {
+  resizingEvent: ResizingEvent = {
     isTracking: false,
     startingCursorX: 0,
     startingWidth: 0,
-    handleWidth: 10,
+    handleWidth: 0,
     maxWidth: 0,
     minWidth: 200,
   };
-
-  constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit() {
     this.#setupResizeHandle();
@@ -58,40 +54,40 @@ export class SidenavComponent implements AfterViewInit {
     this.resizeHandleRef.nativeElement.addEventListener(
       'mousedown',
       (event) => {
-        this.#resizingEvent.isTracking = true;
+        this.resizingEvent.isTracking = true;
 
-        this.#resizingEvent.startingCursorX = event.screenX;
+        this.resizingEvent.startingCursorX = event.clientX;
 
-        this.#resizingEvent.startingWidth =
+        this.resizingEvent.startingWidth =
           this.sidenavBodyRef!.nativeElement.clientWidth;
 
         // max width is the width of the window minus the width of the handle
-        this.#resizingEvent.maxWidth =
-          window.innerWidth - this.#resizingEvent.handleWidth;
+        this.resizingEvent.maxWidth =
+          window.innerWidth - this.resizingEvent.handleWidth;
       }
     );
   }
 
   @HostListener('window:mousemove', ['$event'])
   onMouseMove(event: MouseEvent) {
-    if (!this.#resizingEvent.isTracking) {
+    if (!this.resizingEvent.isTracking) {
       return;
     }
 
-    const cursorDeltaX = event.screenX - this.#resizingEvent.startingCursorX!;
+    const cursorDeltaX = event.clientX - this.resizingEvent.startingCursorX!;
 
     let newWidth = Math.min(
-      this.#resizingEvent.startingWidth! + cursorDeltaX,
-      this.#resizingEvent.maxWidth!
+      this.resizingEvent.startingWidth! + cursorDeltaX,
+      this.resizingEvent.maxWidth!
     );
 
-    newWidth = Math.max(newWidth, this.#resizingEvent.minWidth!);
+    newWidth = Math.max(newWidth, this.resizingEvent.minWidth!);
 
     document.body.style.setProperty('--sidenav-width', `${newWidth}px`);
   }
 
   @HostListener('window:mouseup', ['$event'])
   onMouseUp(event: MouseEvent) {
-    this.#resizingEvent.isTracking = false;
+    this.resizingEvent.isTracking = false;
   }
 }
