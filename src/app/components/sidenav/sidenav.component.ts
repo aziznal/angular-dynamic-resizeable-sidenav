@@ -36,6 +36,9 @@ export class SidenavComponent implements AfterViewInit {
     return this.resizingEvent.isTracking;
   }
 
+  @HostBinding('class.expanded')
+  isExpanded = true;
+
   resizingEvent: ResizingEvent = {
     isTracking: false,
     startingCursorX: 0,
@@ -95,5 +98,9 @@ export class SidenavComponent implements AfterViewInit {
   @HostListener('window:mouseup', ['$event'])
   onMouseUp(event: MouseEvent) {
     this.resizingEvent.isTracking = false;
+  }
+
+  toggleExpanded() {
+    this.isExpanded = !this.isExpanded;
   }
 }

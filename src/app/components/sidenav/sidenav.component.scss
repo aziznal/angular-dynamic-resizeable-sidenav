@@ -1,5 +1,4 @@
 :host {
-  width: var(--sidenav-width);
   height: 100vh;
 
   position: sticky;
@@ -10,6 +9,64 @@
   // make width transition smooth when not resizing manually
   &:not(.resizing) {
     transition: width 0.6s cubic-bezier(0.02, 0.68, 0.63, 0.98);
+  }
+
+  &.expanded {
+    width: var(--sidenav-width);
+  }
+
+  &:not(.expanded) {
+    width: 20px;
+  }
+}
+
+.sidenav-body-container {
+  overflow: hidden;
+}
+
+.sidenav-body {
+  min-width: var(--default-sidenav-width);
+
+  padding: 1rem;
+}
+
+.toggle-button {
+  --button-size: 30px;
+
+  position: absolute;
+
+  width: var(--button-size);
+  height: var(--button-size);
+
+  top: 100px;
+  right: calc(var(--button-size) / -2 + 2px);
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  z-index: 2;
+
+  border: 1px solid rgb(165, 165, 165);
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  background-color: rgb(255, 255, 255);
+
+  transition: transform 0.2s ease-out;
+
+  &:hover,
+  &:active {
+    border-width: 2px;
+    border-color: rgb(93, 159, 235);
+    background-color: rgb(255, 255, 255);
+  }
+
+  &.flipped {
+    transform: rotate(180deg);
   }
 }
 
