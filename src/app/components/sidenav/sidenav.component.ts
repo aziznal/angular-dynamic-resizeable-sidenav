@@ -1,3 +1,5 @@
+import { SidenavService } from './sidenav.service';
+import { SidenavContentHostDirective } from './sidenav-content-host.directive';
 import { RouterModule } from '@angular/router';
 import {
   AfterViewInit,
@@ -22,7 +24,7 @@ interface ResizingEvent {
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, SidenavContentHostDirective],
 })
 export class SidenavComponent implements AfterViewInit {
   @ViewChild('resizeHandle')
@@ -30,6 +32,9 @@ export class SidenavComponent implements AfterViewInit {
 
   @ViewChild('sidenavBody')
   sidenavBodyRef?: ElementRef<HTMLElement>;
+
+  @ViewChild(SidenavContentHostDirective, { static: true })
+  sidenavContentHost!: SidenavContentHostDirective;
 
   @HostBinding('class.resizing')
   get isResizing() {
@@ -48,8 +53,12 @@ export class SidenavComponent implements AfterViewInit {
     minWidth: 200,
   };
 
+  constructor(private sidenavService: SidenavService) {}
+
   ngAfterViewInit() {
     this.#setupResizeHandle();
+
+    this.sidenavService.setContentHost(this.sidenavContentHost);
   }
 
   #setupResizeHandle(): void {
