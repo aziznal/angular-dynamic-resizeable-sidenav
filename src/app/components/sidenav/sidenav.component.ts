@@ -63,6 +63,12 @@ export class SidenavComponent implements AfterViewInit {
     this.resizeHandleRef.nativeElement.addEventListener(
       'mousedown',
       (event) => {
+        // if sidenav is closed, then simply open it and do nothing else
+        if (!this.isExpanded) {
+          this.toggleExpanded();
+          return;
+        }
+
         this.resizingEvent.isTracking = true;
 
         this.resizingEvent.startingCursorX = event.clientX;
@@ -102,5 +108,9 @@ export class SidenavComponent implements AfterViewInit {
 
   toggleExpanded() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  expand() {
+    this.isExpanded = true;
   }
 }
