@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -24,5 +25,7 @@ import { Component } from '@angular/core';
       </li>
     </ul>
   `,
+  standalone: true,
+  imports: [RouterModule],
 })
 export class DefaultSidenavComponent {}

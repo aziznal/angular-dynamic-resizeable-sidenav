@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -33,6 +33,15 @@ const routes: Routes = [
       import('./screens/settings/settings-screen.component').then(
         (m) => m.SettingsScreenComponent
       ),
+    children: [
+      {
+        path: 'profile',
+        loadComponent: () =>
+          import('./screens/profile-settings/profile-settings.component').then(
+            (m) => m.ProfileSettingsComponent
+          ),
+      },
+    ],
   },
   // redirect to `home` if there is no path
   {

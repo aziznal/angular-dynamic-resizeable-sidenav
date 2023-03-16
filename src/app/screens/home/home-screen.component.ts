@@ -1,5 +1,9 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Component } from '@angular/core';
+
+import { SidenavService } from '../../components/sidenav/sidenav.service';
+
+import { DefaultSidenavComponent } from '../../components/default-sidenav/default-sidenav.component';
 
 @Component({
   template: `
@@ -10,4 +14,14 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [RouterModule],
 })
-export class HomeScreenComponent {}
+export class HomeScreenComponent implements OnInit, OnDestroy {
+  constructor(private sidenavService: SidenavService) {}
+
+  ngOnInit() {
+    this.sidenavService.push(DefaultSidenavComponent);
+  }
+
+  ngOnDestroy() {
+    this.sidenavService.pop();
+  }
+}
