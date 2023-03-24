@@ -43,7 +43,7 @@
   width: var(--button-size);
   height: var(--button-size);
 
-  top: 100px;
+  top: 60px;
   right: calc(var(--button-size) / -2 + 2px);
 
   display: flex;
@@ -61,7 +61,7 @@
 
   background-color: white;
 
-  transition: transform 0.2s ease-out;
+  transition: transform 500ms ease-out;
 
   &:hover,
   &:active {
