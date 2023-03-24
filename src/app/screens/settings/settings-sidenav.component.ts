@@ -1,19 +1,16 @@
+import { SidenavLinkComponent } from './../../components/sidenav-link/sidenav-link.component';
 import { RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
   template: `
-    <h1>Settings Sidenav!</h1>
+    <h1>Settings</h1>
 
-    <a routerLink="/">← Back</a>
+    <app-sidenav-link routerLink="/">← Back</app-sidenav-link>
 
-    <ul>
-      <li>
-        <a routerLink="/settings/profile">Profile</a>
-      </li>
-    </ul>
+    <app-sidenav-link routerLink="/settings/profile">Profile</app-sidenav-link>
   `,
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, SidenavLinkComponent],
 })
 export class SettingsSidenavComponent {}

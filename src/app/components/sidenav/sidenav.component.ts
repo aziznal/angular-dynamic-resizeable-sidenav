@@ -1,6 +1,3 @@
-import { SidenavService } from './sidenav.service';
-import { SidenavContentHostDirective } from './sidenav-content-host.directive';
-import { RouterModule } from '@angular/router';
 import {
   AfterViewInit,
   Component,
@@ -9,6 +6,11 @@ import {
   HostListener,
   ViewChild,
 } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { SidenavService } from './sidenav.service';
+
+import { SidenavContentHostDirective } from './sidenav-content-host.directive';
 
 interface ResizingEvent {
   isTracking: boolean;
@@ -16,7 +18,6 @@ interface ResizingEvent {
   startingCursorX?: number;
   handleWidth: number;
   maxWidth?: number;
-  minWidth?: number;
 }
 
 @Component({
@@ -50,7 +51,6 @@ export class SidenavComponent implements AfterViewInit {
     startingWidth: 0,
     handleWidth: 0,
     maxWidth: 0,
-    minWidth: 200,
   };
 
   constructor(private sidenavService: SidenavService) {}
@@ -59,6 +59,37 @@ export class SidenavComponent implements AfterViewInit {
     this.#setupResizeHandle();
 
     this.sidenavService.setContentHost(this.sidenavContentHost);
+  }
+
+  @HostListener('window:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+    if (!this.resizingEvent.isTracking) {
+      return;
+    }
+
+    const cursorDeltaX = event.clientX - this.resizingEvent.startingCursorX!;
+
+    let newWidth = Math.min(
+      this.resizingEvent.startingWidth! + cursorDeltaX,
+      this.resizingEvent.maxWidth!
+    );
+
+    newWidth = Math.max(newWidth, this.#sidenavMinWidth);
+
+    document.body.style.setProperty('--sidenav-width', `${newWidth}px`);
+  }
+
+  @HostListener('window:mouseup', ['$event'])
+  onMouseUp(event: MouseEvent) {
+    this.resizingEvent.isTracking = false;
+  }
+
+  toggleExpanded() {
+    this.isExpanded = !this.isExpanded;
+  }
+
+  expand() {
+    this.isExpanded = true;
   }
 
   #setupResizeHandle(): void {
@@ -92,34 +123,11 @@ export class SidenavComponent implements AfterViewInit {
     );
   }
 
-  @HostListener('window:mousemove', ['$event'])
-  onMouseMove(event: MouseEvent) {
-    if (!this.resizingEvent.isTracking) {
-      return;
-    }
-
-    const cursorDeltaX = event.clientX - this.resizingEvent.startingCursorX!;
-
-    let newWidth = Math.min(
-      this.resizingEvent.startingWidth! + cursorDeltaX,
-      this.resizingEvent.maxWidth!
+  get #sidenavMinWidth(): number {
+    const rawWidth = getComputedStyle(document.body).getPropertyValue(
+      '--sidenav-min-width'
     );
 
-    newWidth = Math.max(newWidth, this.resizingEvent.minWidth!);
-
-    document.body.style.setProperty('--sidenav-width', `${newWidth}px`);
-  }
-
-  @HostListener('window:mouseup', ['$event'])
-  onMouseUp(event: MouseEvent) {
-    this.resizingEvent.isTracking = false;
-  }
-
-  toggleExpanded() {
-    this.isExpanded = !this.isExpanded;
-  }
-
-  expand() {
-    this.isExpanded = true;
+    return rawWidth ? parseInt(rawWidth, 10) : 200;
   }
 }
