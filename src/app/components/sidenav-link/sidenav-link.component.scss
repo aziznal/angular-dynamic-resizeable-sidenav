@@ -3,7 +3,7 @@ a {
   flex-direction: row;
 
   align-items: center;
-  justify-content: flex;
+  justify-content: flex-start;
 
   gap: 8px;
 
@@ -20,6 +20,13 @@ a {
   transition: background-color 75ms ease-out;
 
   border-radius: 4px;
+
+  // change overflowing text to ellipsis
+  .text-container {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
   &:hover {
     background-color: #deebff;

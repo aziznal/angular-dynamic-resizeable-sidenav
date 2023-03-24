@@ -8,13 +8,22 @@ import { Component, Input } from '@angular/core';
       routerLinkActive="active"
       [routerLinkActiveOptions]="routerLinkActiveOptions"
     >
-      <ng-content></ng-content>
+      <!-- Wrapping icon and text with spans to make text truncation work -->
+      <span>
+        <ng-content select="[icon]"></ng-content>
+      </span>
+
+      <span class="text-container">
+        <ng-content></ng-content>
+      </span>
     </a>
   `,
   styleUrls: ['./sidenav-link.component.scss'],
 })
 export class SidenavLinkComponent {
-  @Input() routerLink?: string;
+  @Input()
+  routerLink?: string;
 
-  @Input() routerLinkActiveOptions: { exact: boolean } = { exact: true };
+  @Input()
+  routerLinkActiveOptions: { exact: boolean } = { exact: true };
 }
