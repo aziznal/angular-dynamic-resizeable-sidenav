@@ -6,7 +6,6 @@ import {
   HostListener,
   ViewChild,
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
 import { SidenavService } from './sidenav.service';
 
@@ -24,8 +23,6 @@ interface ResizingEvent {
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
-  standalone: true,
-  imports: [RouterModule, SidenavContentHostDirective],
 })
 export class SidenavComponent implements AfterViewInit {
   @ViewChild('resizeHandle')

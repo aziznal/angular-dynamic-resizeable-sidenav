@@ -1,4 +1,3 @@
-import { RouterModule } from '@angular/router';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -13,8 +12,6 @@ import { Component, Input } from '@angular/core';
     </a>
   `,
   styleUrls: ['./sidenav-link.component.scss'],
-  standalone: true,
-  imports: [RouterModule],
 })
 export class SidenavLinkComponent {
   @Input() routerLink?: string;

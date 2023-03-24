@@ -1,3 +1,12 @@
+import { ProfileComponent } from './screens/profile/profile.component';
+import { PrivacySettingsScreenComponent } from './screens/settings/screens/privacy-settings-screen.component';
+import { NotificationSettingsScreenComponent } from './screens/settings/screens/notifcation-settings-screen.component';
+import { SecuritySettingsScreenComponent } from './screens/settings/screens/security-settings-screen.component';
+import { AccountSettingsScreenComponent } from './screens/settings/screens/account-settings-screen.component';
+import { SettingsComponent } from './screens/settings/settings.component';
+import { Screen2Component } from './screens/screen-2/screen-2.component';
+import { Screen1Component } from './screens/screen-1/screen-1.component';
+import { HomeComponent } from './screens/home/home-screen.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -5,63 +14,41 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadComponent: () =>
-      import('./screens/home/home-screen.component').then(
-        (m) => m.HomeScreenComponent
-      ),
+    component: HomeComponent,
   },
   {
     path: 'screen-1',
-    loadComponent: () =>
-      import('./screens/screen-1/screen-1.component').then(
-        (m) => m.Screen1Component
-      ),
+    component: Screen1Component,
   },
   {
     path: 'screen-2',
-    loadComponent: () =>
-      import('./screens/screen-2/screen-2.component').then(
-        (m) => m.Screen2Component
-      ),
+    component: Screen2Component,
   },
   {
     path: 'settings',
-    loadComponent: () =>
-      import('./screens/settings/settings.component').then(
-        (m) => m.SettingsComponent
-      ),
+    component: SettingsComponent,
+
     children: [
       {
         path: 'account',
-        loadComponent: () =>
-          import(
-            './screens/settings/screens/account-settings-screen.component'
-          ).then((m) => m.AccountSettingsScreenComponent),
+        component: AccountSettingsScreenComponent,
       },
       {
         path: 'security',
-        loadComponent: () =>
-          import(
-            './screens/settings/screens/security-settings-screen.component'
-          ).then((m) => m.SecuritySettingsScreenComponent),
+        component: SecuritySettingsScreenComponent,
       },
       {
         path: 'notifications',
-        loadComponent: () =>
-          import(
-            './screens/settings/screens/notifcation-settings-screen.component'
-          ).then((m) => m.NotificationSettingsScreenComponent),
+        component: NotificationSettingsScreenComponent,
       },
       {
         path: 'privacy',
-        loadComponent: () =>
-          import(
-            './screens/settings/screens/privacy-settings-screen.component'
-          ).then((m) => m.PrivacySettingsScreenComponent),
+        component: PrivacySettingsScreenComponent,
       },
       {
         // redirect to `account` if there is no path
         path: '',
+
         redirectTo: 'account',
         pathMatch: 'full',
       },
@@ -69,10 +56,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    loadComponent: () =>
-      import('./screens/profile/profile.component').then(
-        (m) => m.ProfileComponent
-      ),
+    component: ProfileComponent,
   },
   // redirect to `home` if there is no path
   {

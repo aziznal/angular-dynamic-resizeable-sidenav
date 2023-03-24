@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
 @Component({
   template: `
@@ -7,7 +6,5 @@ import { RouterModule } from '@angular/router';
 
     <router-outlet></router-outlet>
   `,
-  standalone: true,
-  imports: [RouterModule],
 })
-export class HomeScreenComponent {}
+export class HomeComponent {}

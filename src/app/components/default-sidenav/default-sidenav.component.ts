@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { SidenavLinkComponent } from '../sidenav-link/sidenav-link.component';
-
 @Component({
   template: `
     <h1>Sidenav</h1>
@@ -10,18 +8,33 @@ import { SidenavLinkComponent } from '../sidenav-link/sidenav-link.component';
       routerLink="/home"
       [routerLinkActiveOptions]="{ exact: true }"
     >
+      <mat-icon>home</mat-icon>
       Home
     </app-sidenav-link>
 
-    <app-sidenav-link routerLink="/profile">Profile</app-sidenav-link>
+    <app-sidenav-link routerLink="/profile">
+      <mat-icon>account_circle</mat-icon>
 
-    <app-sidenav-link routerLink="screen-1">Screen 1</app-sidenav-link>
+      Profile
+    </app-sidenav-link>
 
-    <app-sidenav-link routerLink="screen-2">Screen 2</app-sidenav-link>
+    <app-sidenav-link routerLink="screen-1">
+      <mat-icon>screen_share</mat-icon>
 
-    <app-sidenav-link routerLink="/settings"> Settings → </app-sidenav-link>
+      Screen 1
+    </app-sidenav-link>
+
+    <app-sidenav-link routerLink="screen-2">
+      <mat-icon>screen_share</mat-icon>
+
+      Screen 2
+    </app-sidenav-link>
+
+    <app-sidenav-link routerLink="/settings">
+      <mat-icon>settings</mat-icon>
+
+      Settings →
+    </app-sidenav-link>
   `,
-  standalone: true,
-  imports: [SidenavLinkComponent],
 })
 export class DefaultSidenavComponent {}

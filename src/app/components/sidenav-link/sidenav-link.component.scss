@@ -3,7 +3,9 @@ a {
   flex-direction: row;
 
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex;
+
+  gap: 8px;
 
   box-sizing: border-box;
 

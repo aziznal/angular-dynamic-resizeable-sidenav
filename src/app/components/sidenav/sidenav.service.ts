@@ -1,5 +1,6 @@
-import { SidenavContentHostDirective } from './sidenav-content-host.directive';
 import { Injectable, Type as ComponentType } from '@angular/core';
+
+import { SidenavContentHostDirective } from './sidenav-content-host.directive';
 
 @Injectable({
   providedIn: 'root',

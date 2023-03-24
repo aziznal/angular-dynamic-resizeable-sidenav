@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   template: `
@@ -43,7 +43,5 @@ import { Component, OnInit } from '@angular/core';
     <h4>Page 1 component!</h4>
     <h4>Page 1 component!</h4>
   `,
-  styles: [``],
-  standalone: true,
 })
 export class Screen1Component {}
