@@ -19,6 +19,8 @@
     width: 20px;
     cursor: pointer;
   }
+
+  background-color: rgb(237, 241, 243);
 }
 
 .sidenav-body-container {
@@ -26,7 +28,7 @@
 }
 
 .sidenav-body {
-  min-width: var(--default-sidenav-width);
+  min-width: var(--min-expanded-sidenav-width);
 
   padding: 1rem;
 
@@ -57,7 +59,7 @@
 
   cursor: pointer;
 
-  background-color: rgb(255, 255, 255);
+  background-color: white;
 
   transition: transform 0.2s ease-out;
 
@@ -65,7 +67,7 @@
   &:active {
     border-width: 2px;
     border-color: rgb(93, 159, 235);
-    background-color: rgb(255, 255, 255);
+    background-color: white;
   }
 
   &.flipped {
