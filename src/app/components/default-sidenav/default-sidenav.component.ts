@@ -13,13 +13,13 @@ import { SidenavLinkComponent } from '../sidenav-link/sidenav-link.component';
       Home
     </app-sidenav-link>
 
-    <app-sidenav-link routerLink="home/screen-1">Screen 1</app-sidenav-link>
+    <app-sidenav-link routerLink="/profile">Profile</app-sidenav-link>
 
-    <app-sidenav-link routerLink="home/screen-2">Screen 2</app-sidenav-link>
+    <app-sidenav-link routerLink="screen-1">Screen 1</app-sidenav-link>
 
-    <app-sidenav-link routerLink="/settings">
-      <span>Settings →</span>
-    </app-sidenav-link>
+    <app-sidenav-link routerLink="screen-2">Screen 2</app-sidenav-link>
+
+    <app-sidenav-link routerLink="/settings"> Settings → </app-sidenav-link>
   `,
   standalone: true,
   imports: [SidenavLinkComponent],
