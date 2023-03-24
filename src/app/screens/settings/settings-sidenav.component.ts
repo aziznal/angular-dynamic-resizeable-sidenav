@@ -23,20 +23,6 @@ import { Component } from '@angular/core';
     <app-sidenav-link routerLink="/settings/privacy">
       Privacy
     </app-sidenav-link>
-
-    <app-sidenav-link routerLink="/settings/blocked">
-      Blocked
-    </app-sidenav-link>
-
-    <app-sidenav-link routerLink="/settings/deactivate">
-      Deactivate
-    </app-sidenav-link>
-
-    <app-sidenav-link routerLink="/settings/close"> Close </app-sidenav-link>
-
-    <app-sidenav-link routerLink="/settings/report"> Report </app-sidenav-link>
-
-    <app-sidenav-link routerLink="/settings/help"> Help </app-sidenav-link>
   `,
   standalone: true,
   imports: [RouterModule, SidenavLinkComponent],

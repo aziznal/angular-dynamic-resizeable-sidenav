@@ -27,15 +27,50 @@ const routes: Routes = [
   {
     path: 'settings',
     loadComponent: () =>
-      import('./screens/settings/settings-screen.component').then(
-        (m) => m.SettingsScreenComponent
+      import('./screens/settings/settings.component').then(
+        (m) => m.SettingsComponent
       ),
-    children: [],
+    children: [
+      {
+        path: 'account',
+        loadComponent: () =>
+          import(
+            './screens/settings/screens/account-settings-screen.component'
+          ).then((m) => m.AccountSettingsScreenComponent),
+      },
+      {
+        path: 'security',
+        loadComponent: () =>
+          import(
+            './screens/settings/screens/security-settings-screen.component'
+          ).then((m) => m.SecuritySettingsScreenComponent),
+      },
+      {
+        path: 'notifications',
+        loadComponent: () =>
+          import(
+            './screens/settings/screens/notifcation-settings-screen.component'
+          ).then((m) => m.NotificationSettingsScreenComponent),
+      },
+      {
+        path: 'privacy',
+        loadComponent: () =>
+          import(
+            './screens/settings/screens/privacy-settings-screen.component'
+          ).then((m) => m.PrivacySettingsScreenComponent),
+      },
+      {
+        // redirect to `account` if there is no path
+        path: '',
+        redirectTo: 'account',
+        pathMatch: 'full',
+      },
+    ],
   },
   {
     path: 'profile',
     loadComponent: () =>
-      import('./screens/profile-settings/profile-settings.component').then(
+      import('./screens/profile/profile.component').then(
         (m) => m.ProfileComponent
       ),
   },
