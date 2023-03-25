@@ -14,6 +14,8 @@ import { Component } from '@angular/core';
       Back
     </app-sidenav-link>
 
+    <hr />
+
     <app-sidenav-link routerLink="/settings/account">
       <mat-icon icon>account_circle</mat-icon>
 
