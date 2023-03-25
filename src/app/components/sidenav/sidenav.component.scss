@@ -31,6 +31,26 @@
   height: 100%;
 }
 
+// slide in from left animation
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+// slide out to left animation
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 .sidenav-body {
   height: 100%;
 
@@ -39,6 +59,14 @@
   padding: 1rem;
 
   box-sizing: border-box;
+
+  &.slide-in {
+    animation: slideIn 320ms cubic-bezier(0.02, 0.68, 0.63, 0.98);
+  }
+
+  &.slide-out {
+    animation: slideOut 320ms cubic-bezier(0.02, 0.68, 0.63, 0.98);
+  }
 }
 
 .toggle-button {

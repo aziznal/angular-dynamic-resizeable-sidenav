@@ -50,7 +50,7 @@ export class SidenavComponent implements AfterViewInit {
     maxWidth: 0,
   };
 
-  constructor(private sidenavService: SidenavService) {}
+  constructor(public sidenavService: SidenavService) {}
 
   ngAfterViewInit() {
     this.#setupResizeHandle();

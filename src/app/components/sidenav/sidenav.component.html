@@ -1,6 +1,10 @@
 <!-- Sidenav Body -->
 <div class="sidenav-body-container" #sidenavBody (click)="expand()">
-  <div class="sidenav-body">
+  <div
+    class="sidenav-body"
+    [class.slide-in]="sidenavService.slideIn"
+    [class.slide-out]="sidenavService.slideOut"
+  >
     <div sidenavContentHost></div>
   </div>
 </div>
