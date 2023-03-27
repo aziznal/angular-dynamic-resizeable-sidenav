@@ -31,3 +31,10 @@
     Settings
   </app-sidenav-link>
 </div>
+
+<!-- Resize Handle -->
+<div
+  class="resize-handle"
+  [class.resizing]="resizingEvent.isResizing"
+  (mousedown)="startResizing($event)"
+></div>

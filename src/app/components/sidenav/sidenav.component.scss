@@ -10,7 +10,10 @@
 
   background-color: rgb(237, 241, 243);
 
-  border-right: 2px solid rgb(192, 192, 192);
+  // make width transition smooth when not resizing manually
+  &:not(.resizing) {
+    transition: width 0.6s cubic-bezier(0.02, 0.68, 0.63, 0.98);
+  }
 }
 
 .sidenav-body-container {
@@ -21,4 +24,52 @@
   padding: 16px;
 
   box-sizing: border-box;
+}
+
+.resize-handle {
+  height: 100%;
+
+  background-color: rgb(165, 165, 165);
+  width: 2px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  cursor: ew-resize;
+
+  // prevent text selection while dragging
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  transition: background-color 0.2s ease-out;
+
+  &:hover {
+    width: 3px;
+    background-color: rgb(93, 159, 235);
+  }
+
+  // buffer to make it easier to grab the resize handle
+  &::after {
+    content: "";
+    display: block;
+
+    height: 100%;
+
+    width: 24px;
+
+    position: absolute;
+    right: -12px;
+    z-index: 1;
+  }
+
+  // buffer to avoid flickering cursor when resizing
+  &.resizing::after {
+    width: 100px;
+    right: calc(-100px / 2);
+  }
 }
