@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { SidenavService } from './sidenav.service';
 
 @Component({
@@ -8,4 +8,9 @@ import { SidenavService } from './sidenav.service';
 })
 export class SidenavComponent {
   constructor(public sidenavService: SidenavService) {}
+
+  @HostBinding('class.is-expanded')
+  get isExpanded() {
+    return this.sidenavService.isExpanded;
+  }
 }

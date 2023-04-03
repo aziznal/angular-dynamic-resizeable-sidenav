@@ -1,6 +1,11 @@
 :host {
   height: 100vh;
-  width: var(--sidenav-width);
+
+  width: var(--sidenav-collapsed-width);
+
+  &.is-expanded {
+    width: var(--sidenav-width);
+  }
 
   box-sizing: border-box;
 
@@ -11,6 +16,8 @@
   background-color: rgb(237, 241, 243);
 
   border-right: 2px solid rgb(192, 192, 192);
+
+  transition: width 300ms cubic-bezier(0.02, 0.68, 0.63, 0.98);
 }
 
 .sidenav-body-container {
@@ -21,4 +28,50 @@
   padding: 16px;
 
   box-sizing: border-box;
+}
+
+.sidenav-body {
+  width: 100%;
+
+  overflow-x: hidden;
+}
+
+.toggle-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  $size: 25px;
+  width: $size;
+  height: $size;
+  margin: 0;
+  padding: 0;
+
+  position: absolute;
+  top: 48px;
+  // the -2px is to get the alignment just right *chefs kiss*
+  right: calc($size / -2) - 2px;
+
+  border: 1px solid gray;
+  border-radius: 50%;
+
+  background-color: white;
+
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid rgb(36, 82, 231);
+  }
+
+  &.is-flipped {
+    transform: rotate(-180deg);
+  }
+
+  mat-icon {
+    font-size: 1.5em;
+
+    width: fit-content;
+    height: fit-content;
+  }
 }
