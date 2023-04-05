@@ -22,3 +22,31 @@
 
   box-sizing: border-box;
 }
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.sidenav-body {
+  &.slide-in-from-left {
+    animation: slideInFromLeft var(--sidenav-transition-duration) ease-out;
+  }
+
+  &.slide-in-from-right {
+    animation: slideInFromRight var(--sidenav-transition-duration) ease-out;
+  }
+}
