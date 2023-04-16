@@ -1,6 +1,8 @@
-import { Component, HostBinding, HostListener } from '@angular/core';
+import { Component, HostBinding, HostListener, ViewChild } from '@angular/core';
 
 import { SidenavService } from './sidenav.service';
+
+import { SidenavContentAreaDirective } from './sidenav-content-area.directive';
 
 @Component({
   selector: 'app-sidenav',
@@ -20,6 +22,17 @@ export class SidenavComponent {
   };
 
   constructor(public sidenavService: SidenavService) {}
+
+  @ViewChild(SidenavContentAreaDirective, { static: true })
+  sidenavContentArea?: SidenavContentAreaDirective;
+
+  ngOnInit(): void {
+    if (!this.sidenavContentArea) {
+      throw new Error('sidenavContentArea is undefined');
+    }
+
+    this.sidenavService.setDynamicContentArea(this.sidenavContentArea);
+  }
 
   @HostBinding('class.resizing')
   get isResizing(): boolean {
