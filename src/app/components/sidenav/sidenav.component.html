@@ -1,35 +1,37 @@
 <div class="sidenav-body-container">
-  <h1>Sidenav</h1>
+  <div class="sidenav-body">
+    <h1>Sidenav</h1>
 
-  <app-sidenav-link routerLink="/home">
-    <mat-icon icon>home</mat-icon>
+    <app-sidenav-link routerLink="/home">
+      <mat-icon icon>home</mat-icon>
 
-    Home
-  </app-sidenav-link>
+      Home
+    </app-sidenav-link>
 
-  <app-sidenav-link routerLink="/profile">
-    <mat-icon icon>account_circle</mat-icon>
+    <app-sidenav-link routerLink="/profile">
+      <mat-icon icon>account_circle</mat-icon>
 
-    Profile
-  </app-sidenav-link>
+      Profile
+    </app-sidenav-link>
 
-  <app-sidenav-link routerLink="screen-1">
-    <mat-icon icon>screen_share</mat-icon>
+    <app-sidenav-link routerLink="screen-1">
+      <mat-icon icon>screen_share</mat-icon>
 
-    Screen 1
-  </app-sidenav-link>
+      Screen 1
+    </app-sidenav-link>
 
-  <app-sidenav-link routerLink="screen-2">
-    <mat-icon icon>screen_share</mat-icon>
+    <app-sidenav-link routerLink="screen-2">
+      <mat-icon icon>screen_share</mat-icon>
 
-    Screen 2
-  </app-sidenav-link>
+      Screen 2
+    </app-sidenav-link>
 
-  <app-sidenav-link routerLink="/settings">
-    <mat-icon icon>settings</mat-icon>
+    <app-sidenav-link routerLink="/settings">
+      <mat-icon icon>settings</mat-icon>
 
-    Settings
-  </app-sidenav-link>
+      Settings
+    </app-sidenav-link>
+  </div>
 </div>
 
 <!-- Resize Handle -->
@@ -38,3 +40,11 @@
   [class.resizing]="resizingEvent.isResizing"
   (mousedown)="startResizing($event)"
 ></div>
+
+<button
+  class="toggle-button"
+  (click)="this.sidenavService.toggleSidenav()"
+  [class.is-flipped]="sidenavService.isExpanded"
+>
+  <mat-icon icon>chevron_right</mat-icon>
+</button>

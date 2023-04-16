@@ -1,6 +1,11 @@
 :host {
   height: 100vh;
-  width: var(--sidenav-width);
+
+  width: var(--sidenav-collapsed-width);
+
+  &.is-expanded {
+    width: var(--sidenav-width);
+  }
 
   box-sizing: border-box;
 
@@ -24,6 +29,12 @@
   padding: 16px;
 
   box-sizing: border-box;
+}
+
+.sidenav-body {
+  width: 100%;
+
+  overflow-x: hidden;
 }
 
 .resize-handle {
@@ -71,5 +82,47 @@
   &.resizing::after {
     width: 100px;
     right: calc(-100px / 2);
+  }
+}
+
+.toggle-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  $size: 25px;
+  width: $size;
+  height: $size;
+  margin: 0;
+  padding: 0;
+
+  position: absolute;
+  top: 48px;
+  // the -2px is to get the alignment just right *chefs kiss*
+  right: calc($size / -2) - 2px;
+
+  border: 1px solid gray;
+  border-radius: 50%;
+
+  background-color: white;
+
+  cursor: pointer;
+
+  z-index: 2;
+
+  &:hover {
+    border: 2px solid rgb(36, 82, 231);
+  }
+
+  &.is-flipped {
+    transform: rotate(-180deg);
+  }
+
+  mat-icon {
+    font-size: 1.5em;
+
+    width: fit-content;
+    height: fit-content;
   }
 }

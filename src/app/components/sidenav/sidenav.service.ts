@@ -8,6 +8,8 @@ export class SidenavService {
 
   readonly sidenavMaxWidth = window.innerWidth - 300;
 
+  isExpanded = true;
+
   get sidenavWidth(): number {
     return parseInt(
       getComputedStyle(document.body).getPropertyValue('--sidenav-width'),
@@ -25,5 +27,17 @@ export class SidenavService {
     );
 
     document.body.style.setProperty('--sidenav-width', `${clampedWidth}px`);
+  }
+
+  toggleSidenav() {
+    this.isExpanded = !this.isExpanded;
+  }
+
+  expandSidenav() {
+    this.isExpanded = true;
+  }
+
+  collapseSidenav() {
+    this.isExpanded = false;
   }
 }
